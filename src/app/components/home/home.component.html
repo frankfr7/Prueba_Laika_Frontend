@@ -1,1 +1,78 @@
-<p>home works!</p>
+<div class="container col-md-12">
+
+    <h1 class="text-center">
+      {{page_title}}
+    </h1>
+    <hr>
+  
+    
+      <div class="z-depth-4">
+          <table class="table table-striped text-center">
+              <thead class="thead-dark">
+                  <tr>
+                      <th>#</th>
+                      <th>Nombre del tipo de documento</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody *ngFor="let tipo of tipos_documentos">
+                  <tr>
+                      <td>{{tipo.id}}</td>
+                      <td>{{tipo.nombre}}</td>
+                      <td>
+                        <a [routerLink]="['/edit-tipo-documento/', tipo.id]" class="btn btn-warning"> Editar</a>
+                        &nbsp;
+                        <a (click)="deleteTipoDocumento(tipo.id)" class="btn btn-danger">Eliminar</a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <a [routerLink]="['/add-tipo-documento']" type="button" class="btn btn-success"> Agregar</a>
+      </div>
+    <hr>
+
+    <br>
+    <br>
+
+    <h1 class="text-center">
+        {{page_title2}}
+      </h1>
+      <hr>
+    
+      
+        <div class="z-depth-4">
+            <table class="table table-striped text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Primer nombre</th>
+                        <th>Segundo nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Número de documento</th>
+                        <th>Tipo de identificacion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let user of users">
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.primer_nombre}}</td>
+                        <td>{{user.segundo_nombre}}</td>
+                        <td>{{user.primer_apellido}}</td>
+                        <td>{{user.segundo_apellido}}</td>
+                        <td>{{user.nro_documento}}</td>
+                        <td>{{user['tipo_documento'].nombre}}</td>
+                        <td>
+                            <a [routerLink]="['/edit-user/', user.id]" class="btn btn-warning"> Editar</a>
+                            &nbsp;
+                            <a (click)="deleteUser(user.id)" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a [routerLink]="['/add-user']" type="button" class="btn btn-success"> Agregar</a>
+        </div>
+      <hr>
+  
+  </div>

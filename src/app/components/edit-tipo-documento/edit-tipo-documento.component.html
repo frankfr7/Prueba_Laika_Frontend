@@ -1,1 +1,43 @@
-<p>edit-tipo-documento works!</p>
+<!-- EDITAR TIPO DE DOCUMENTO -->
+
+<div class="container col-md-5 mb-2 mt-2 z-depth-5">
+
+    <div class="container p-1 col-md-12 text-center mb-2 mt-2 z-depth-3 light-blue lighten-1 text-white">
+        <h1 id="titulo" class="mb-2 text-center">Editar el tipo de documento</h1>
+    </div>
+    <p class="text-center w-responsive mx-auto mb-5">Debes llenar los datos de la tabla completamente.</p>
+
+    <form class="form-horizontal mb-4" #EditarTipoDocumento="ngForm" (ngSubmit)="onSubmit(EditarTipoDocumento)">
+
+        <div class="alert alert-success" *ngIf="status == 'success'">
+            El tipo de documento ha sido editado con éxito.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            No se pudo editar el tipo, por favor, revisa que los datos estén correctos.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <fieldset>
+            
+            <div class="md-form">
+                <input type="text" name="nombre" class="md-textarea form-control" #nombre="ngModel" [(ngModel)]="tipo.nombre" mdbInput required>
+                <label for="nombre">Nombre del apn</label>
+                <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">El nombre no es válido</small>
+            </div>
+
+            <div class="form-group md-form">
+                <div class="col-md-8 float-left">
+                    <a mdbBtn [routerLink]="['/']" class="btn btn-indigo my-4 white-text"><i class="fas fa-arrow-left"></i> Volver</a>
+                    <input type="submit" class="btn btn-success waves-light" value="Guardar" mdbWavesEffect>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!-- FIN DE EDITAR TIPO DE DOCUMENTO -->

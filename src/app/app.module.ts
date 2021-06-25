@@ -10,7 +10,6 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { EditTipoDocumentoComponent } from './components/edit-tipo-documento/edit-tipo-documento.component';
 import { AddTipoDocumentoComponent } from './components/add-tipo-documento/add-tipo-documento.component';
-import { ViewUserComponent } from './components/view-user/view-user.component';
 import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ErrorComponent } from './components/error/error.component';
     EditUserComponent,
     EditTipoDocumentoComponent,
     AddTipoDocumentoComponent,
-    ViewUserComponent,
     ErrorComponent
   ],
   imports: [
