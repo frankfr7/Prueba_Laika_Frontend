@@ -1,1 +1,80 @@
-<p>edit-user works!</p>
+<!-- EDITAR USUARIO -->
+
+<div class="container col-md-5 mb-2 mt-2 z-depth-5">
+
+    <div class="container p-1 col-md-12 text-center mb-2 mt-2 z-depth-3 light-blue lighten-1 text-white">
+        <h1 id="titulo" class="mb-2 text-center">Editar el usuario</h1>
+    </div>
+    <p class="text-center w-responsive mx-auto mb-5">Debes llenar los datos de la tabla completamente.</p>
+
+    <form class="form-horizontal mb-4" #EditarUsuario="ngForm" (ngSubmit)="onSubmit(EditarUsuario)">
+
+        <div class="alert alert-success" *ngIf="status == 'success'">
+            El usuario ha sido editado con éxito.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            No se pudo editar el usuario, por favor, revisa que los datos estén correctos.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <fieldset>
+            
+            <div class="md-form">
+                <label for="primer_nombre">Primer nombre</label>
+                <input type="text" name="primer_nombre" class="md-textarea form-control" #primer_nombre="ngModel" [(ngModel)]="user.primer_nombre" mdbInput required>
+                <small *ngIf="!primer_nombre.valid && primer_nombre.touched" class="invalid-feedback d-block">El primer nombre no es válido</small>
+            </div>
+
+            <div class="md-form">
+                <label for="segundo_nombre">Segundo nombre</label>
+                <input type="text" name="segundo_nombre" class="md-textarea form-control" #segundo_nombre="ngModel" [(ngModel)]="user.segundo_nombre" mdbInput required>
+                <small *ngIf="!segundo_nombre.valid && segundo_nombre.touched" class="invalid-feedback d-block">El segundo nombre no es válido</small>
+            </div>
+
+            <div class="md-form">
+                <label for="primer_apellido">Primer apellido</label>
+                <input type="text" name="primer_apellido" class="md-textarea form-control" #primer_apellido="ngModel" [(ngModel)]="user.primer_apellido" mdbInput required>
+                <small *ngIf="!primer_apellido.valid && primer_apellido.touched" class="invalid-feedback d-block">El primer apellido no es válido</small>
+            </div>
+
+            <div class="md-form">
+                <label for="segundo_apellido">Segundo apellido</label>
+                <input type="text" name="segundo_apellido" class="md-textarea form-control" #segundo_apellido="ngModel" [(ngModel)]="user.segundo_apellido" mdbInput required>
+                <small *ngIf="!segundo_apellido.valid && segundo_apellido.touched" class="invalid-feedback d-block">El segundo apellido no es válido</small>
+            </div>
+
+            <div class="md-form">
+                <label for="nro_documento">Número de documento</label>
+                <input type="number" name="nro_documento" class="md-textarea form-control" #nro_documento="ngModel" [(ngModel)]="user.nro_documento" mdbInput required>
+                <small *ngIf="!nro_documento.valid && nro_documento.touched" class="invalid-feedback d-block">El número de documento no es válido</small>
+            </div>
+
+            <div class="form-group md-form">
+                <div class="container text-center col-md-11">
+                    <label for="tipo_documento_id"><b>Tipo de documento</b></label>
+                    <br>
+                    <br>
+                    <select name="tipo_documento_id" #tipo_documento_id="ngModel" [(ngModel)]="user.tipo_documento_id"  class="form-control">
+                        <option *ngFor="let tipodocumento of tiposdedocumentos" value="{{tipodocumento.id}}">
+                            {{tipodocumento.nombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group md-form">
+                <div class="col-md-8 float-left">
+                    <a [routerLink]="['/']" class="btn btn-primary"> Volver</a>
+                    <input type="submit" class="btn btn-success waves-light" value="Guardar" mdbWavesEffect>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!-- FIN DE EDITAR USUARIO -->

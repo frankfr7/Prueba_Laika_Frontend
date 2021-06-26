@@ -15,9 +15,9 @@ const appRoutes: Routes = [
     // Home
     {path: '', component: HomeComponent},
     {path: 'add-user', component: AddUserComponent},
-    {path: 'edit-user/{id}',component: EditUserComponent},
+    {path: 'edit-user/:id',component: EditUserComponent},
     {path: 'add-tipo-documento', component: AddTipoDocumentoComponent},
-    {path: 'edit-tipo-documento/:id}', component: EditTipoDocumentoComponent},
+    {path: 'edit-tipo-documento/:id', component: EditTipoDocumentoComponent},
 
 
     {path: '**', component: ErrorComponent}

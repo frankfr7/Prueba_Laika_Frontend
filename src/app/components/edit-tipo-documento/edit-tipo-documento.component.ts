@@ -14,7 +14,6 @@ export class EditTipoDocumentoComponent implements OnInit {
   public status: string;
   public tipo_documento: Tipo_documento;
   public token: any;
-  public tipo: any;
   public id: any;
 
   constructor(
@@ -30,23 +29,7 @@ export class EditTipoDocumentoComponent implements OnInit {
   ngOnInit(): void {
     this.getTipoDocumentoObtener();
   }
-
-  onSubmit(form: any){
-    this._tipoDocumentoService.create(this.tipo_documento, this.token).subscribe(
-      response => {
-        if (response.status == "success") {
-          this.status = 'success';
-          form.reset();
-        }else{
-          this.status = 'error';
-        }
-       },
-       error => {
-         this.status = 'error';
-       }
-    );
-  }
-
+  
   getTipoDocumentoObtener(){
     //Sacar el id del post de la url
     this._route.params.subscribe(params => {
@@ -55,8 +38,7 @@ export class EditTipoDocumentoComponent implements OnInit {
       this._tipoDocumentoService.getTipoDocumento(this.id, this.token).subscribe(
         response =>{
           if (response.status == 'success') {
-            this.tipo = response.Tipo_documento;
-            console.log('this.tipo');
+            this.tipo_documento = response.Tipo_documento;
           }
         },
         error =>{
@@ -64,6 +46,21 @@ export class EditTipoDocumentoComponent implements OnInit {
         }
       );
     });
+  }
+
+  onSubmit(form: any){
+    this._tipoDocumentoService.update(this.id, this.tipo_documento, this.token).subscribe(
+      response => {
+        if (response.status == "success") {
+          this.status = 'success';
+        }else{
+          this.status = 'error';
+        }
+       },
+       error => {
+         this.status = 'error';
+       }
+    );
   }
 
 }
